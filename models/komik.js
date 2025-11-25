@@ -1,6 +1,3 @@
-const { DataTypes } = require("sequelize");
-const { sequelize } = require(".");
-
 module.exports = (sequelize, DataTypes) => {
     const Komik = sequelize.define("Komik", {
         id: {
@@ -9,26 +6,22 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true
         },
         title: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
         },
         description: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
         },
         author: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false,
         },
-        imageType: {
-            type: DataTypes.STRING
-        },
-        imageName: {
-            type: DataTypes.STRING
-        },
-        ImageData: {
-            type: DataTypes.BLOB('long')
-        }
-    }, {
-        tableName: "komikk"
-    });
+        imageType: DataTypes.STRING,
+        imageName: DataTypes.STRING,
+        imageData: DataTypes.BLOB('long'),
+    },
+    {
+        tableName : "komik",
 
+    });
     return Komik;
-};
+}
